@@ -145,7 +145,7 @@ My final model results were:
 
 I have chosen 10 German traffic signs, including duplicates of the same sign class:
 
-![alt text][sign1]{height=50px width=50} ![alt text][sign2] ![alt text][sign3] ![alt text][sign4] ![alt text][sign5]
+![alt text][sign1] ![alt text][sign2] ![alt text][sign3] ![alt text][sign4] ![alt text][sign5]
 ![alt text][sign6] ![alt text][sign7] ![alt text][sign8] ![alt text][sign9] ![alt text][sign10]
 
 The second and the fifth images might be difficult to classify because the signs are rotated in relation to the camera therefore their shapes are distorted. 
