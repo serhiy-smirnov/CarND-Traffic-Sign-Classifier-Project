@@ -143,10 +143,13 @@ My final model results were:
 
 #### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
-I have chosen 10 German traffic signs, including duplicates of the same sign class:
+I have chosen 10 German traffic signs, including slightly different duplicates of the same sign class.
+You can see the source images below:
 
 ![alt text][sign1] ![alt text][sign2] ![alt text][sign3] ![alt text][sign4] ![alt text][sign5]
 ![alt text][sign6] ![alt text][sign7] ![alt text][sign8] ![alt text][sign9] ![alt text][sign10]
+
+These images were resized to 32x32 and normalized in the same way as the images from the training/validation/testing datasets.
 
 The second and the fifth images might be difficult to classify because the signs are rotated in relation to the camera therefore their shapes are distorted. 
 
