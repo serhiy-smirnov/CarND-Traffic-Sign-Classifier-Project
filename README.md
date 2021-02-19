@@ -22,16 +22,9 @@ The goals / steps of this project are the following:
 [overfitting4]: ./images/overfitting4.jpg "Overfitting 4"
 [overfitting5]: ./images/overfitting5.jpg "Overfitting 5"
 [overfitting6]: ./images/overfitting6.jpg "Overfitting 6"
-[sign1]: ./signs/1.jpg "Traffic Sign 1"
-[sign2]: ./signs/2.jpg "Traffic Sign 2"
-[sign3]: ./signs/3.jpg "Traffic Sign 3"
-[sign4]: ./signs/4.jpg "Traffic Sign 4"
-[sign5]: ./signs/5.jpg "Traffic Sign 5"
-[sign6]: ./signs/6.jpg "Traffic Sign 6"
-[sign7]: ./signs/7.jpg "Traffic Sign 7"
-[sign8]: ./signs/8.jpg "Traffic Sign 8"
-[sign9]: ./signs/9.jpg "Traffic Sign 9"
-[sign10]: ./signs/10.jpg "Traffic Sign 10"
+[signs1]: ./images/new_signs1.jpg "New Traffic Signs"
+[signs2]: ./images/new_signs2.jpg "New Traffic Signs"
+[detection_probabilities]: ./images/detection_probabilities.jpg "Detection probabilities"
 [layers_visualization]: ./images/layers_visualization.jpg "Layers visualization"
 
 ## Rubric Points
@@ -131,6 +124,12 @@ Before I came to this final model, I went through several iterations to find an 
 
 8. After implementation of data normalization, early stop kicks in after ~43 epochs allowing to reach target validation accuracy of more than 0.93
 
+I used the batch size of 128 which seems to be reasonable for my local system in terms of memory consumption.
+
+I used Adam optimizer with initial learning rate of 0.001.
+I tried to decrease learning rate to 0.0005, but that bumped about two times number of epochs required to come to a good accuracy. At the same time it didn't bring any significant improvement of the validation and testing accuracy.
+So I decided to stay with the learning rate of 0.001
+
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
@@ -146,8 +145,8 @@ My final model results were:
 I have chosen 10 German traffic signs, including slightly different duplicates of the same sign class.
 You can see the source images below:
 
-![alt text][sign1] ![alt text][sign2] ![alt text][sign3] ![alt text][sign4] ![alt text][sign5]
-![alt text][sign6] ![alt text][sign7] ![alt text][sign8] ![alt text][sign9] ![alt text][sign10]
+![alt text][signs1]
+![alt text][signs2]
 
 These images were resized to 32x32 and normalized in the same way as the images from the training/validation/testing datasets.
 
@@ -172,6 +171,17 @@ Here are the results of the prediction:
 
 
 The model was able to correctly guess 7 of the 10 traffic signs, which gives an accuracy of 70%.
+
+In average the accuracy with this new dataset differs from the accuracy with the test data set by ~24% (70% vs 94.2%)
+
+This is quite a lot! The model has indeed problems with the images I mentioned above, but not only.
+
+I can think about the following improvements:
+* Augment the training data set with rotated/flipped/squizzed images to make model more comfortable with deformed images
+* Try other regularization technics, like Batch normalization
+* Increase size of the training data set
+
+
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
@@ -250,6 +260,11 @@ Sign file './signs\9.jpg' (reference label '14' - 'Stop') is detected with the f
  with probability of 0.00000 as sign class '15' - 'No vehicles'
  with probability of 0.00000 as sign class '18' - 'General caution'
 ```
+
+It is also interesting to check barcharts for detection probabilities, especially in the cases when the detection was not so sure. For example:
+
+![alt text][detection_probabilities]
+
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
